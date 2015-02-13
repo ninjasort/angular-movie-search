@@ -1,0 +1,37 @@
+<div id="detail-modal" class="modal">
+  <div class="row">
+    <div class="col s5">
+      <img class="col s12" ng-src="{{::detail.Poster}}">
+    </div>
+    <div class="col s6">
+      <h4>{{::detail.Title}}</h4>
+      <p class="col s6">
+	<strong>Released</strong>
+	{{::detail.Released}}
+	<strong>IMDB Rating</strong>
+	{{::detail.imdbRating}}
+      </p>
+      <p class="col s6">
+	<strong>Rated</strong>
+	{{::detail.Rated}}<br>
+	<strong>Genre</strong>
+	{{::detail.Genre}}
+      </p>
+      <p class="col s6">
+	<strong>Director</strong><br>
+	{{::detail.Director}}
+      </p>
+      <p class="col s6">
+	<strong>Actors</strong><br>
+	{{::detail.Actors}}
+      </p>
+      <p class="col s12">
+	<strong>Plot</strong><br>
+	{{::detail.Plot}}
+      </p>
+    </div>
+  </div>
+  <div class="action-bar">
+    <a ui-sref="search" class="waves-effect waves-green btn-flat modal-action modal-close">Close</a>
+  </div>
+</div>

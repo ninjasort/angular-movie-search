@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="header">
+        <figure class="background-movies">
+            <div class="row">
+                <div class="col s6 offset-s3">
+                    <h1 class="intro-header">Find the perfect movie!</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 offset-s3">
+                    <search-input></search-input>
+                </div>
+            </div>
+        </figure>
+    </header>
+
+    <div class="container">
+        <div ui-view></div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="center-align">
+                <a href="http://cameronjroe.com">Read the blog post</a>
+                <a href="http://twitter.com/cameronjroe">by @cameronjroe</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/materialize/dist/js/materialize.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-touch/angular-touch.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/services/search.js"></script>
+    <script src="scripts/directives/search-input.js"></script>
+    <script src="scripts/controllers/search.js"></script>
+    <script src="scripts/controllers/details.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/init.js"></script>
+    <!-- endbuild -->
+
+</body>
+
+</html>
