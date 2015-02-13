@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Application
+ * Movie Search
  */
 angular.module('movieSearch', [
     'ui.router',
@@ -14,11 +14,17 @@ angular.module('movieSearch', [
     .config(function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
+            /**
+             * Search a Movie
+             */
             .state('search', {
                 url: '/',
                 templateUrl: 'views/search-results.html',
                 controller: 'SearchCtrl'
             })
+            /**
+             * View Movie Details
+             */
             .state('details', {
                 url: '/details/:slug',
                 templateUrl: 'views/details.html',
