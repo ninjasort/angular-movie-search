@@ -5,13 +5,7 @@
  */
 angular.module('movieSearch', [
     'ui.router',
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
     'ngSanitize',
-    'ngTouch',
     'movieSearch.config',
     'movieSearch.services',
     'movieSearch.controllers',
