@@ -46,7 +46,9 @@ angular.module('movieSearch.services', [])
                                 res.data.slug = res.data.Title.toLowerCase().split(' ').join('-');
                                 result = res.data;
                             } catch (e) {
-                                result = 'no results';
+                                if (res.data.Error) {
+                                    result = {error: res.data.Error};
+                                }
                             }
                             self.results.push(result);
                         }
