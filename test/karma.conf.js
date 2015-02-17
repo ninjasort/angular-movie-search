@@ -15,13 +15,7 @@ module.exports = function(config) {
     files: [
       // bower:js
       'app/lib/angular/angular.js',
-      'app/lib/angular-animate/angular-animate.js',
-      'app/lib/angular-aria/angular-aria.js',
-      'app/lib/angular-cookies/angular-cookies.js',
-      'app/lib/angular-messages/angular-messages.js',
-      'app/lib/angular-resource/angular-resource.js',
       'app/lib/angular-sanitize/angular-sanitize.js',
-      'app/lib/angular-touch/angular-touch.js',
       'app/lib/angular-ui-router/release/angular-ui-router.js',
       'app/lib/angular-mocks/angular-mocks.js',
       'app/scripts/config.js',
