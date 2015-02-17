@@ -56,18 +56,22 @@ gulp.task('browserSync', function () {
     });
 });
 
+// Clean
+// ----------------------------------------
 gulp.task('clean', function () {
     return gulp.src('dist')
         .pipe(clean());
 });
 
+// Vendor js
+// ----------------------------------------
 gulp.task('vendorjs', ['clean'], function () {
     return gulp.src('./app/*.html')
         .pipe(usemin())
         .pipe(gulp.dest('dist'));
 });
 
-// Pipeline - styles, lint, babel, uglify
+// Pipeline - styles, lint, browserify
 // ----------------------------------------
 gulp.task('pipeline', ['styles', 'lint', 'clean', 'vendorjs'], function () {
    
