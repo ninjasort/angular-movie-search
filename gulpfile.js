@@ -1,6 +1,4 @@
 var gulp        = require('gulp');
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
 var jshint      = require('gulp-jshint');
 var uglify      = require('gulp-uglify');
 var concat      = require('gulp-concat');
