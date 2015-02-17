@@ -1,21 +1,24 @@
 'use strict';
 
 /**
- * About Controller
+ * Details Controller
  */
-angular.module('movieSearch.controllers')
-    .controller('DetailsCtrl', function($scope, $state, $stateParams, Search) {
+var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
 
-        $(function() {
-            $('#detail-modal').openModal();
-        });
-
-        if (!Search.query) {
-            $state.go('search');
-        }
-
-        $scope.detail = Search.results.filter(function(movie) {
-            return movie.slug === $stateParams.slug;
-        })[0];
-
+    $(() => {
+        $('#detail-modal').openModal();
     });
+
+    if (!Search.query) {
+        $state.go('search');
+    }
+
+    $scope.detail = Search.results.filter((movie) => {
+        return movie.slug === $stateParams.slug;
+    })[0];
+    
+};
+
+DetailsCtrl.$inject = ['$scope', '$state', '$stateParams', 'Search'];
+
+export default DetailsCtrl;

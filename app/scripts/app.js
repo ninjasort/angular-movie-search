@@ -3,34 +3,42 @@
 /**
  * Movie Search
  */
-angular.module('movieSearch', [
+
+import {services, controllers, directives, config} from './app.config';
+
+var movieSearch = 'movieSearch';
+var appConfig = ($stateProvider, $urlRouterProvider) => {
+
+    $stateProvider
+        /**
+         * Search a Movie
+         */
+        .state('search', {
+            url: '/',
+            templateUrl: 'views/search-results.html',
+            controller: 'SearchCtrl'
+        })
+        /**
+         * View Movie Details
+         */
+        .state('details', {
+            url: '/details/:slug',
+            templateUrl: 'views/details.html',
+            controller: 'DetailsCtrl'
+        });
+
+    $urlRouterProvider.otherwise('/');
+};
+
+appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+angular.module(movieSearch, [
     'ui.router',
     'ngSanitize',
-    'movieSearch.config',
-    'movieSearch.services',
-    'movieSearch.controllers',
-    'movieSearch.components'
-])
-    .config(function($stateProvider, $urlRouterProvider) {
+    config,
+    services,
+    controllers,
+    directives
+]).config(appConfig);
 
-        $stateProvider
-            /**
-             * Search a Movie
-             */
-            .state('search', {
-                url: '/',
-                templateUrl: 'views/search-results.html',
-                controller: 'SearchCtrl'
-            })
-            /**
-             * View Movie Details
-             */
-            .state('details', {
-                url: '/details/:slug',
-                templateUrl: 'views/details.html',
-                controller: 'DetailsCtrl'
-            })
-
-        $urlRouterProvider.otherwise('/');
-
-    });
+export default movieSearch;
