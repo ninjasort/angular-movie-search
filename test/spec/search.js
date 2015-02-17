@@ -2,7 +2,7 @@
 
 describe('Search', function() {
 
-    beforeEach(module('gaChallenge'));
+    beforeEach(module('movieSearch'));
 
     var Search, $httpBackend;
 

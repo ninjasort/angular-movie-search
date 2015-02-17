@@ -9,7 +9,7 @@ module.exports = function(config) {
     basePath: '../',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine'],
+    frameworks: ['browserify', 'jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -25,6 +25,15 @@ module.exports = function(config) {
       'app/scripts/**/*.js',
       'test/spec/**/*.js'
     ],
+
+    preprocessors: {
+      'app/scripts/**/*.js': ['browserify']
+    },
+
+    browserify: {
+      debug: true,
+      transform: [ 'babelify' ]
+    },
 
     // list of files / patterns to exclude
     exclude: [
