@@ -1,3 +1,3 @@
 # Angular Movie Search
 
-![](/app/images/demo.png)
+![](/images/demo.png)
