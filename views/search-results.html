@@ -1,0 +1,53 @@
+<section class="search-results">
+
+  <div class="row" ng-if="isLoading">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+	<div class="circle-clipper left">
+	  <div class="circle"></div>
+	</div>
+	<div class="gap-patch">
+	  <div class="circle"></div>
+	</div>
+	<div class="circle-clipper right">
+	  <div class="circle"></div>
+	</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" ng-if="!isLoading">
+    <div class="col s12 m8 offset-m2">
+      <h2 ng-if="results[0].error">{{::results[0].error}}</h2>
+      <div class="card small" ng-repeat="movie in results" ng-if="!results[0].error">
+      	<div class="card-image">
+      	  <img ng-src="{{::movie.Poster}}">
+      	  <span class="card-title">{{::movie.Title}}</span>
+      	</div>
+      	<div class="card-content">
+      	  <ul>
+      	    <li>
+      	      <strong>Plot</strong>
+      	      <p>{{::movie.Plot}}</p>
+      	    </li>
+      	    <li>
+      	      <strong>IMDB Rating</strong>
+      	      <p>{{::movie.imdbRating}}</p>
+      	    </li>
+      	    <li>
+      	      <strong>Actors</strong>
+      	      <p>{{::movie.Actors}}</p>
+      	    </li>
+      	    <li>
+      	      <strong>Released</strong>
+      	      <p>{{::movie.Released}}</p>
+      	    </li>
+      	  </ul>
+      	</div>
+      	<div class="card-action right-align">
+      	  <a ui-sref="details({slug: movie.slug})">More Details</a>
+      	</div>
+      </div>
+    </div>
+  </div>
+</section>
