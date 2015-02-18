@@ -7701,13 +7701,43 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
 
 .background-movies {
   margin: 0;
-  padding-top: 12em;
   width: 100%;
-  height: 500px;
   background-image: url('http://poachedmag.com/wp-content/uploads/2014/02/500-DAYS-OF-SUMMER-CINEMA-SCENE.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center center; }
+  background-size: 100%; }
+  @media only screen and (max-width : 600px) {
+    .background-movies {
+      background-position: top center;
+      padding-top: 4em;
+      height: 260px; }
+      .background-movies .header {
+        text-align: center; }
+        .background-movies .header .intro-header {
+          font-size: 2em;
+          line-height: 1; } }
+  @media only screen and (min-width : 601px) {
+    .background-movies {
+      background-position: top center;
+      height: 400px;
+      padding-top: 6em; }
+      .background-movies .header {
+        text-align: center; }
+        .background-movies .header .intro-header {
+          font-size: 2.5em;
+          line-height: 1; } }
+  @media only screen and (min-width : 993px) {
+    .background-movies {
+      background-position: center center;
+      height: 500px;
+      padding-top: 12em; }
+      .background-movies .header .intro-header {
+        font-size: 4em; } }
+
+.search-results {
+  padding: 2em; }
+  @media only screen and (max-width : 992px) {
+    .search-results {
+      padding: 0; } }
 
 .intro-header {
   color: #fff; }
@@ -7724,9 +7754,17 @@ ul.side-nav .collapsible-body li.active, ul.side-nav.fixed .collapsible-body li.
     right: 6px;
     font-size: 2em;
     color: #fff; }
+  @media only screen and (max-width : 992px) {
+    .search-input input, .search-input i {
+      font-size: 1.5em; } }
 
-.search-results {
-  padding: 2em; }
+@media only screen and (max-width : 992px) {
+  .modal {
+    width: 80%; } }
+@media only screen and (max-width : 992px) {
+  .modal .modal-content__title {
+    text-align: center;
+    margin-top: 1em; } }
 
 .browsehappy {
   margin: 0.2em 0;
@@ -7754,3 +7792,6 @@ body {
 .preloader-wrapper {
   margin: 4em auto;
   display: block; }
+
+.footer {
+  margin: 4em; }

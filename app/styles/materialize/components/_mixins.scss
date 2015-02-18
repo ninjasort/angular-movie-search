@@ -3,3 +3,9 @@
     -moz-box-shadow: $args1, $args2;
     box-shadow: $args1, $args2;
 }
+
+@mixin respond-to($size) {
+  @media #{$size} {
+    @content;
+  }
+}
