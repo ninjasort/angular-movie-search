@@ -5,12 +5,24 @@
  */
 var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
 
+    function goHome() {
+      $state.go('search');
+    }
+
     $(() => {
-        $('#detail-modal').openModal();
+
+        let modalOptions = {
+          complete: () => {
+            goHome();
+          }
+        };
+
+        $('#detail-modal')
+          .openModal(modalOptions);
     });
 
     if (!Search.query) {
-        $state.go('search');
+        goHome();
     }
 
     $scope.detail = Search.results.filter((movie) => {

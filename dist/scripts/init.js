@@ -130,17 +130,27 @@ module.exports = movieSearch;
  * Details Controller
  */
 var DetailsCtrl = function ($scope, $state, $stateParams, Search) {
-    $(function () {
-        $("#detail-modal").openModal();
-    });
+  function goHome() {
+    $state.go("search");
+  }
 
-    if (!Search.query) {
-        $state.go("search");
-    }
+  $(function () {
+    var modalOptions = {
+      complete: function () {
+        goHome();
+      }
+    };
 
-    $scope.detail = Search.results.filter(function (movie) {
-        return movie.slug === $stateParams.slug;
-    })[0];
+    $("#detail-modal").openModal(modalOptions);
+  });
+
+  if (!Search.query) {
+    goHome();
+  }
+
+  $scope.detail = Search.results.filter(function (movie) {
+    return movie.slug === $stateParams.slug;
+  })[0];
 };
 
 DetailsCtrl.$inject = ["$scope", "$state", "$stateParams", "Search"];

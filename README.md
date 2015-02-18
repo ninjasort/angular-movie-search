@@ -5,7 +5,7 @@
 ### Todos
 
 - [x] Fix responsive layout
-- [ ] Fix bug when closing modal on detail page
+- [x] Fix bug when closing modal on detail page
 - [ ] Fix 403 forbidden on gh-pages
 - [ ] Finalize blog post
 - [ ] Finalize readme
