@@ -9,13 +9,13 @@
 - [ ] Fix 403 forbidden on gh-pages
 - [ ] Finalize blog post
 - [x] Finalize readme
-- [ ] Finish gulp build with minified html, css, js
+- [x] Finish gulp build with minified html, css, js
 
 ## Usage
 
 - Clone the repo
 - Run `npm install && bower install`
 - Run `gulp watch`
-- Open http://localhost:8000/dist/
+- Open `http://localhost:8000/dist/`
 
 Check out the tutorial [here](http://cameronjroe.com/code/angular-movie-search)

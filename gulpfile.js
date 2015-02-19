@@ -1,19 +1,20 @@
-var gulp        = require('gulp');
-var jshint      = require('gulp-jshint');
-var uglify      = require('gulp-uglify');
-var concat      = require('gulp-concat');
-var usemin      = require('gulp-usemin');
-var source      = require('vinyl-source-stream');
-var clean       = require('gulp-clean');
-var browserify  = require('browserify');
-var ngAnnotate  = require('gulp-ng-annotate');
-var sass        = require('gulp-sass');
-var minifyCss   = require('gulp-minify-css');
-var minifyHtml  = require('gulp-minify-html');
-var webserver   = require('gulp-webserver');
-var karma       = require('gulp-karma');
-var babel       = require('gulp-babel');
-var babelify    = require('babelify');
+var gulp       = require('gulp');
+var jshint     = require('gulp-jshint');
+var uglify     = require('gulp-uglify');
+var concat     = require('gulp-concat');
+var usemin     = require('gulp-usemin');
+var source     = require('vinyl-source-stream');
+var buffer     = require('vinyl-buffer');
+var clean      = require('gulp-clean');
+var browserify = require('browserify');
+var ngAnnotate = require('gulp-ng-annotate');
+var sass       = require('gulp-sass');
+var minifyCss  = require('gulp-minify-css');
+var minifyHtml = require('gulp-minify-html');
+var webserver  = require('gulp-webserver');
+var karma      = require('gulp-karma');
+var babel      = require('gulp-babel');
+var babelify   = require('babelify');
 
 var config = {
     app: 'app'
@@ -65,7 +66,11 @@ gulp.task('clean', function () {
 // ----------------------------------------
 gulp.task('vendorjs', ['clean'], function () {
     return gulp.src('./app/*.html')
-        .pipe(usemin())
+        .pipe(usemin({
+            html: [minifyHtml()],
+            css: [minifyCss()],
+            vendorjs: [uglify()]
+        }))
         .pipe(gulp.dest('dist'));
 });
 
@@ -79,6 +84,8 @@ gulp.task('pipeline', ['styles', 'lint', 'clean', 'vendorjs'], function () {
     return browserify('./app/scripts/init.js')
         .bundle()
         .pipe(source('init.js'))
+        .pipe(buffer())
+        .pipe(uglify())
         .pipe(gulp.dest('dist/scripts'));
 });
 
