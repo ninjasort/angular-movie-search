@@ -17,7 +17,7 @@
   </div>
 
   <div class="row" ng-if="!isLoading">
-    <div class="col s12 m8 offset-m2">
+    <div class="col s12 m10 offset-m1 l8 offset-l2">
       <h2 ng-if="results[0].error">{{::results[0].error}}</h2>
       <div class="card small" ng-repeat="movie in results" ng-if="!results[0].error">
       	<div class="card-image">
