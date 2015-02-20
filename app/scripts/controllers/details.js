@@ -9,8 +9,17 @@ var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
       $state.go('search');
     }
 
-    $(() => {
+    function getMovie() {
+      // get movie selected
+      var selectedMovie = Search.results.filter((movie) => {
+          return movie.slug === $stateParams.slug;
+      })[0];
+      // fetch movie details
+      return Search.fetchMovieDetails(selectedMovie.id);
+    }
 
+    // set up modal
+    $(() => {
         let modalOptions = {
           complete: () => {
             goHome();
@@ -21,13 +30,18 @@ var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
           .openModal(modalOptions);
     });
 
+    // check query
     if (!Search.query) {
-        goHome();
+      goHome();
     }
 
-    $scope.detail = Search.results.filter((movie) => {
-        return movie.slug === $stateParams.slug;
-    })[0];
+    /**
+     * Get movie details
+     */
+    getMovie().then(function (res) {
+      $scope.detail = res.data;
+    });
+
     
 };
 

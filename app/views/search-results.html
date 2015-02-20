@@ -18,29 +18,29 @@
 
   <div class="row" ng-if="!isLoading">
     <div class="col s12 m10 offset-m1 l8 offset-l2">
-      <h2 ng-if="results[0].error">{{::results[0].error}}</h2>
-      <div class="card small" ng-repeat="movie in results" ng-if="!results[0].error">
+      <!-- <h2 ng-if="results[0].error">{{::results[0].error}}</h2> -->
+      <div class="card small" ng-repeat="movie in results">
       	<div class="card-image">
-      	  <img ng-src="{{::movie.Poster}}">
-      	  <span class="card-title">{{::movie.Title}}</span>
+      	  <img ng-src="{{::movie.posters.original}}">
+      	  <span class="card-title">{{::movie.title}}</span>
       	</div>
       	<div class="card-content">
       	  <ul>
       	    <li>
       	      <strong>Plot</strong>
-      	      <p>{{::movie.Plot}}</p>
+      	      <p>{{::movie.synopsis}}</p>
       	    </li>
       	    <li>
-      	      <strong>IMDB Rating</strong>
-      	      <p>{{::movie.imdbRating}}</p>
+      	      <strong>{{::movie.ratings.critics_rating}}</strong>
+      	      <p>{{::movie.ratings}}</p>
       	    </li>
       	    <li>
       	      <strong>Actors</strong>
-      	      <p>{{::movie.Actors}}</p>
+      	      <p><span ng-repeat="actor in ::movie.abridged_cast">{{::actor.name}}</span></p>
       	    </li>
       	    <li>
       	      <strong>Released</strong>
-      	      <p>{{::movie.Released}}</p>
+      	      <p>{{::movie.year}}</p>
       	    </li>
       	  </ul>
       	</div>

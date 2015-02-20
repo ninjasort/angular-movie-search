@@ -34,7 +34,8 @@ var directives = 'movieSearch.directives';
 angular.module(config, [])
   .constant('config', {
     api: {
-      url: 'http://www.omdbapi.com'
+      url: 'http://api.rottentomatoes.com/api/public/v1.0/movies.json',
+      key: 'vdm7ddbykynptbk84gtsq7s2'
     }
   });
 

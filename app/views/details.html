@@ -2,35 +2,37 @@
   <div class="row">
     <section class="details-modal__poster">
       <div class="col s12 m5">
-        <img class="col s12" ng-src="{{::detail.Poster}}">
+        <img class="col s12" ng-src="{{::detail.posters.original}}">
       </div>
     </section>
     <section class="details-modal__content">
       <div class="col s12 m6">
-        <h4 class="modal-content__title">{{::detail.Title}}</h4>
+        <h4 class="modal-content__title">{{::detail.title}}</h4>
         <p class="col s6">
       	<strong>Released</strong>
-      	{{::detail.Released}}
-      	<strong>IMDB Rating</strong>
-      	{{::detail.imdbRating}}
+      	{{::detail.year}}
+      	<strong>{{::detail.ratings.critics_rating}}</strong>
+      	{{::detail.ratings.critics_score}}
             </p>
             <p class="col s6">
       	<strong>Rated</strong>
-      	{{::detail.Rated}}<br>
+      	{{::detail.mpaa_rating}}<br>
       	<strong>Genre</strong>
-      	{{::detail.Genre}}
+      	{{::detail.genres[0]}}
             </p>
             <p class="col s6">
       	<strong>Director</strong><br>
-      	{{::detail.Director}}
+      	{{::detail.abridged_directors[0].name}}
             </p>
             <p class="col s6">
       	<strong>Actors</strong><br>
-      	{{::detail.Actors}}
+      	<span ng-repeat="actor in ::detail.abridged_cast">
+         {{::actor.name}} 
+        </span>
             </p>
             <p class="col s12">
       	<strong>Plot</strong><br>
-      	{{::detail.Plot}}
+      	{{::detail.synopsis}}
         </p>
       </div>
     </section>
