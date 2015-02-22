@@ -18,7 +18,7 @@ describe('Search', function() {
 
     it('should return a list of movies', function() {
 
-        $httpBackend.when('GET', 'http://www.omdbapi.com?r=json&t=gravity')
+        $httpBackend.when('GET', 'http://miniml-api.herokuapp.com/movies?page_limit=1&q=gravity')
             .respond({
                 Title: 'Gravity'
             });
