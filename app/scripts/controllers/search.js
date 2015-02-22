@@ -16,6 +16,7 @@ var SearchCtrl = ($rootScope, $scope, Search) => {
         return Search.query;
     }, (val) => {
         if (!val) {
+            $scope.query = Search.query;
             $scope.results = [];
         }
     });
@@ -23,6 +24,11 @@ var SearchCtrl = ($rootScope, $scope, Search) => {
         return Search.isLoading;
     }, (val) => {
         $scope.isLoading = Search.isLoading;
+    });
+    $scope.$watch(() => {
+        return Search.error;
+    }, (val) => {
+        $scope.error = Search.error;
     });
 };
 

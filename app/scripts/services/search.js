@@ -14,9 +14,10 @@ var Search = ($q, $rootScope, $sanitize, $timeout, $http, config) => {
         isLoading: false,
 
         fetchMovieDetails(id) {
-            var moviesUrl = config.api.url;
-            var detailUrl = moviesUrl.split('.json').splice(1, 0, id).join('');
-            return $http.get(detailsUrl, {params: {apikey: config.api.key}, cache: true});
+            return $http({
+                url: [config.api.url, id].join('/'),
+                cache: true
+            });
         },
 
         searchMovies(query) {
@@ -28,8 +29,7 @@ var Search = ($q, $rootScope, $sanitize, $timeout, $http, config) => {
                 url: config.api.url,
                 params: {
                     q: encodedQuery,
-                    apikey: config.api.key,
-                    page_limit: 3
+                    page_limit: 1
                 },
                 method: 'GET',
                 cache: true
@@ -37,16 +37,20 @@ var Search = ($q, $rootScope, $sanitize, $timeout, $http, config) => {
         },
 
         handleInput(val) {
-
             this.query = val;
             
             if (val) {
                 this.searchMovies(val).then((res) => {
                     this.isLoading = false;
                     this.results = [];
-
+                    this.error = '';
+                    
                     if (res.data.length) {
                         this.results.concat(res.data.movies);
+                    } else if (res.data.movies && res.data.movies.length){
+                        this.results = res.data.movies;
+                    } else {
+                        this.error = res.data.error || 'No movies found.';
                     }
                 });
             }

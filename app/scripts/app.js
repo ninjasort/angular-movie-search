@@ -22,7 +22,7 @@ var appConfig = ($stateProvider, $urlRouterProvider) => {
          * View Movie Details
          */
         .state('details', {
-            url: '/details/:slug',
+            url: '/details/:id',
             templateUrl: 'views/details.html',
             controller: 'DetailsCtrl'
         });

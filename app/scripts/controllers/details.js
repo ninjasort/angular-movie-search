@@ -12,7 +12,7 @@ var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
     function getMovie() {
       // get movie selected
       var selectedMovie = Search.results.filter((movie) => {
-          return movie.slug === $stateParams.slug;
+          return movie.id === $stateParams.id;
       })[0];
       // fetch movie details
       return Search.fetchMovieDetails(selectedMovie.id);
