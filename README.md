@@ -6,7 +6,7 @@
 
 - [x] Fix responsive layout
 - [x] Fix bug when closing modal on detail page
-- [ ] Fix 403 forbidden on gh-pages
+- [x] Fix 403 forbidden on gh-pages
 - [ ] Finalize blog post
 - [x] Finalize readme
 - [x] Finish gulp build with minified html, css, js
