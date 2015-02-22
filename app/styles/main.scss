@@ -20,6 +20,20 @@ body {
   }
   .card-content {
     height: auto;
+    ul {
+      float: left;
+      width: 75%;
+    }
+    li {
+      float: left;
+      margin: 0.5em 1.5em;
+    }
+    .movie-image {
+      float: left;
+      width: 20%;
+      text-align: center;
+      margin-top: 2em;
+    }
   }
   .card-action {
     position: relative;
