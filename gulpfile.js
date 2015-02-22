@@ -24,7 +24,7 @@ var config = {
 // Server
 // ----------------------------------------
 gulp.task('server', function() {
-    return gulp.src('.')
+    return gulp.src('./dist')
         .pipe(webserver({
             livereload: true
         }))
