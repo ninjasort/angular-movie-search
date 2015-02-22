@@ -9,6 +9,7 @@ var clean      = require('gulp-clean');
 var browserify = require('browserify');
 var ngAnnotate = require('gulp-ng-annotate');
 var sass       = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var minifyCss  = require('gulp-minify-css');
 var minifyHtml = require('gulp-minify-html');
 var webserver  = require('gulp-webserver');
@@ -33,7 +34,9 @@ gulp.task('server', function() {
 // ----------------------------------------
 gulp.task('styles', function() {
     return gulp.src('app/styles/**/*.scss')
-        .pipe(sass())
+        .pipe(sourcemaps.init())
+            .pipe(sass())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/styles'));
 });
 
@@ -64,11 +67,10 @@ gulp.task('clean', function () {
 
 // Vendor js
 // ----------------------------------------
-gulp.task('vendorjs', ['clean'], function () {
+gulp.task('vendorjs', ['clean', 'styles'], function () {
     return gulp.src('./app/*.html')
         .pipe(usemin({
             html: [minifyHtml()],
-            css: [minifyCss()],
             vendorjs: [uglify()]
         }))
         .pipe(gulp.dest('dist'));
@@ -76,7 +78,7 @@ gulp.task('vendorjs', ['clean'], function () {
 
 // Pipeline - styles, lint, browserify
 // ----------------------------------------
-gulp.task('pipeline', ['styles', 'lint', 'clean', 'vendorjs'], function () {
+gulp.task('pipeline', ['lint', 'vendorjs'], function () {
    
     gulp.src(['./app/views/**', './app/styles/font/**', './app/images/**'], {base: './app'})
         .pipe(gulp.dest('dist'));
