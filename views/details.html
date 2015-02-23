@@ -12,7 +12,9 @@
         </div>
         <p ng-if="detail.year" class="col s6">
         <strong>Released</strong> {{::detail.year}}
-        <strong>{{::detail.ratings.critics_rating}}</strong> {{::detail.ratings.critics_score}}
+        </p>
+        <p ng-if="detail.ratings" class="col s6">
+          <strong>{{::detail.ratings.critics_rating}}</strong> {{::detail.ratings.critics_score}}
         </p>
         <p ng-if="detail.mpaa_rating" class="col s6">
         <strong>Rated</strong> {{::detail.mpaa_rating}}
