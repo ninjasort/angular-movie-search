@@ -9,13 +9,9 @@ var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
       $state.go('search');
     }
 
-    function getMovie() {
-      // get movie selected
-      var selectedMovie = Search.results.filter((movie) => {
-          return movie.id === $stateParams.id;
-      })[0];
-      // fetch movie details
-      return Search.fetchMovieDetails(selectedMovie.id);
+    // check query
+    if (!$stateParams.id) {
+      goHome();
     }
 
     // set up modal
@@ -26,22 +22,14 @@ var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
           }
         };
 
-        $('#detail-modal')
-          .openModal(modalOptions);
+        /**
+         * Get movie details
+         */
+        Search.fetchMovieDetails($stateParams.id).then(function (res) {
+          $scope.detail = res.data;
+          $('#detail-modal').openModal(modalOptions);
+        });
     });
-
-    // check query
-    if (!Search.query) {
-      goHome();
-    }
-
-    /**
-     * Get movie details
-     */
-    getMovie().then(function (res) {
-      $scope.detail = res.data;
-    });
-
     
 };
 
