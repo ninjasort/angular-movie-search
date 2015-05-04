@@ -3,7 +3,7 @@
 .background-movies {
   margin: 0;
   width: 100%;
-  background-image: url('http://poachedmag.com/wp-content/uploads/2014/02/500-DAYS-OF-SUMMER-CINEMA-SCENE.jpg');
+  background-image: url('../images/movies.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   @include respond-to($small-and-down) {
