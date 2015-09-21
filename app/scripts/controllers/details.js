@@ -1,36 +1,34 @@
-'use strict';
-
 /**
  * Details Controller
  */
 var DetailsCtrl = ($scope, $state, $stateParams, Search) => {
 
     function goHome() {
-      $state.go('search');
+        $state.go('search');
     }
 
     // check query
     if (!$stateParams.id) {
-      goHome();
+        goHome();
     }
 
     // set up modal
     $(() => {
         let modalOptions = {
-          complete: () => {
-            goHome();
-          }
+            complete: () => {
+                goHome();
+            }
         };
 
         /**
          * Get movie details
          */
-        Search.fetchMovieDetails($stateParams.id).then(function (res) {
-          $scope.detail = res.data;
-          $('#detail-modal').openModal(modalOptions);
+        Search.fetchMovieDetails($stateParams.id).then(function(res) {
+            $scope.detail = res.data;
+            $('#detail-modal').openModal(modalOptions);
         });
     });
-    
+
 };
 
 DetailsCtrl.$inject = ['$scope', '$state', '$stateParams', 'Search'];

@@ -4,6 +4,8 @@
 // Imports
 // ------------------------------------------------
 
+import angular from 'angular';
+
 /**
  * Services
  */

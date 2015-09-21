@@ -4,6 +4,7 @@
  * Init
  */
 
+import angular from 'angular';
 import movieSearch from './app';
 
 angular.element(document).ready(function () {

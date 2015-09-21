@@ -1,9 +1,6 @@
-'use strict';
-
 /**
  * Search
  */
-
 var Search = ($q, $rootScope, $sanitize, $timeout, $http, config) => {
     return {
 

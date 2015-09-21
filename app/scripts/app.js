@@ -1,10 +1,16 @@
-'use strict';
-
 /**
  * Movie Search
  */
 
-import {services, controllers, directives, config} from './app.config';
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import ngSanitize from 'angular-sanitize';
+import {
+    services,
+    controllers,
+    directives,
+    config
+} from './app.config';
 
 var movieSearch = 'movieSearch';
 var appConfig = ($stateProvider, $urlRouterProvider) => {
@@ -33,8 +39,8 @@ var appConfig = ($stateProvider, $urlRouterProvider) => {
 appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 angular.module(movieSearch, [
-    'ui.router',
-    'ngSanitize',
+    uiRouter,
+    ngSanitize,
     config,
     services,
     controllers,
