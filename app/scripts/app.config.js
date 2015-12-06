@@ -36,7 +36,7 @@ var directives = 'movieSearch.directives';
 angular.module(config, [])
   .constant('config', {
     api: {
-      url: 'http://miniml-api.herokuapp.com/movies'
+      url: 'http://pillar-five-api.herokuapp.com/movies'
     }
   });
 
