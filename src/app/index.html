@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Movie Search</title>
+    <meta name="description" content="Angular Movie Search - Cameron J Roe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/core.css">
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    <nav>
+      <div class="container">
+        <a ui-sref="app.search" class="brand-logo">Angular Movie Search</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li  ui-sref-active="active"><a ui-sref="app.watchlist">Watch List</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li ui-sref-active="active"><a ui-sref="app.watchlist">Watch List</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ui-view></ui-view>
+    
+    <footer class="footer">
+      <div class="container">
+        <p class="center-align">
+          <a href="http://cameronjroe.com/code/angular-movie-search">Read the blog post by @cameronjroe</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+    <script src="js/moviesearch.min.js"></script>
+  </body>
+</html>

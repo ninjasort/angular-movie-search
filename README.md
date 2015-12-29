@@ -1,12 +1,12 @@
 # Angular Movie Search
 
-![](/app/images/readme_image.png)
+![](/src/img/readme_image.png)
 
 ## Usage
 
 - Clone the repo
 - Run `npm install && bower install`
-- Run `gulp watch`
-- Open `http://localhost:8000/`
+- Run `npm start`
+- Open `http://localhost:3000`
 
-Check out the tutorial [here](http://cameronjroe.com/code/angular-movie-search)
+Check out the tutorial [here](http://velocitycoding.com/2016/01/01/angular-movie-search)

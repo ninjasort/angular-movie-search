@@ -1,0 +1,74 @@
+<header class="header">
+  <figure class="background-movies">
+    <div class="row">
+      <div class="header col s10 offset-s1 m6 offset-m3">
+        <h1 class="intro-header">Find the perfect movie!</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="search col s10 offset-s1 m6 offset-m3">
+        <search-input 
+          on-search="app.search(query)"
+          on-clear-results="app.clearResults()">
+        </search-input>
+      </div>
+    </div>
+  </figure>
+</header>
+<div class="container">
+  <section class="search-results">
+    <div class="row" ng-if="search.isLoading">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-if="!search.isLoading">
+      <div class="col s12 m10 offset-m1 l8 offset-l2">
+        <h2 ng-if="error">{{::search.error}}</h2>
+        <div class="card small" ng-repeat="movie in search.results" ng-if="search.results.length">
+          <div class="card-content">
+            <div class="movie-image">
+              <img ng-src="{{::movie.posters.original}}">
+            </div>
+            <ul>
+              <li ng-if="movie.title">
+                <strong>Title</strong>
+                <p>{{::movie.title}}</p>
+              </li>
+              <li ng-if="movie.year">
+                <strong>Released</strong>
+                <p>{{::movie.year}}</p>
+              </li>
+              <li ng-if="movie.ratings">
+                <strong>{{::movie.ratings.critics_rating}}</strong>
+                <p>{{::movie.ratings.critics_score}}</p>
+              </li>
+              <li ng-if="movie.synopsis">
+                <strong>Plot</strong>
+                <p>{{::movie.synopsis}}</p>
+              </li>
+              <li ng-if="movie.actors">
+                <strong>Actors</strong>
+                <p ng-repeat="actor in ::movie.abridged_cast">{{::actor.name}}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="card-action right-align">
+            <a ui-sref="app.search.details({id: movie.id})">More Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div ui-view=""></div>

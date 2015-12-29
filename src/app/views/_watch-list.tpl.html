@@ -1,0 +1,16 @@
+<div class="container">
+  <section class="watch-list">
+    <ul class="collection">
+      <li class="collection-item avatar" ng-repeat="item in watchList.watchlist">
+        <img src="{{::item.posters.thumbnail}}" alt="{{::item.title}}" class="circle">
+        <span class="title">{{::item.title}}</span>
+        <p>{{::item.mpaa_rating}} <br>
+           {{::item.release_dates.theater}}
+        </p>
+        <a href ng-click="watchList.clearWatch(item.id)" class="secondary-content">
+          <i class="material-icons dp48">Watched</i>
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
