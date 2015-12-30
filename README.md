@@ -1,6 +1,6 @@
 # Angular Movie Search
 
-![](/src/img/readme_image.png)
+![](/src/assets/img/readme_image.png)
 
 ## Usage
 
