@@ -2,7 +2,6 @@
  * App
  */
 export default {
-  bindings: {},
   templateUrl: 'views/_app.tpl.html',
   controller: [
     '$state',

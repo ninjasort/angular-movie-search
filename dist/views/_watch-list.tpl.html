@@ -7,7 +7,7 @@
     <ul class="collection">
       <p ng-if="!watchList.watchlist.length" 
         style="padding: 0 2rem;">
-        No movies added to watchlist. Add some <a ui-sref="app.search">here</a>.
+        No movies added to watch list. Add some <a ui-sref="app.search">here</a>.
       </p>
       <li class="collection-item avatar" ng-repeat="item in watchList.watchlist">
         <a href ng-click="watchList.showDetails({item: item})">

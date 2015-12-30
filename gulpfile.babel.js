@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-// import jshint from 'gulp-jshint';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
 import usemin from 'gulp-usemin';
@@ -34,7 +33,9 @@ var config = {
   watch: [
     'src/app/**/*.js',
     'src/styles/**/*.scss'
-  ]
+  ],
+  testSrc: './tests',
+  testConfig: 'test/karma.conf.js'
 };
 
 // Styles
@@ -48,14 +49,6 @@ gulp.task('styles', () => {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.stylesDest));
 });
-
-// // Linting
-// // ----------------------------------------
-// gulp.task('lint', ['styles'], () => {
-//   return gulp.src(['app/scripts/**/*.js'])
-//     .pipe(jshint())
-//     .pipe(jshint.reporter('jshint-stylish'));
-// });
 
 // BrowserSync
 // ----------------------------------------
@@ -123,15 +116,15 @@ gulp.task('pipeline', ['usemin'], () => {
 
 // Test
 // ----------------------------------------
-// gulp.task('test', () => {
-//   return gulp.src('./tests')
-//     .pipe(karma({
-//       configFile: 'test/karma.conf.js',
-//       action: 'watch'
-//     })).on('error', (err) => {
-//       this.emit('end'); //instead of erroring the stream, end it
-//     });
-// });
+gulp.task('test', () => {
+  return gulp.src(config.testSrc)
+    .pipe(karma({
+      configFile: config.testConfig,
+      action: 'watch'
+    })).on('error', (err) => {
+      this.emit('end'); //instead of erroring the stream, end it
+    });
+});
 
 // -------------------------------------------------
 // Watchers

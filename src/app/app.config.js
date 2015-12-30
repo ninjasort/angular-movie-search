@@ -11,11 +11,11 @@ import AppService from './services/app';
 // views
 import App from './components/app';
 import Search from './components/search';
+import WatchList from './components/watch-list';
 // widgets
 import SearchInput from './components/search-input';
 import SearchResults from './components/search-results';
 import Info from './components/info';
-import WatchList from './components/watch-list';
 
 /**
  * Config
