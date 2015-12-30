@@ -30,39 +30,48 @@ angular.module('movieSearch', [
         template: '<app></app>'
       })
       /**
-       * Movie Search
+       * Movie Search View
        */
       .state('app.search', {
         url: '/',
-        template: '<search is-loading="app.isLoading" results="app.results"></search>'
-      })
-      /**
-       * Movie Details
-       */
-      .state('app.search.details', {
-        url: '/details/:id',
-        template: '<info on-add-item-to-watchlist="app.onAddItemToWatchlist(item)"></info>',
+        template: '<search></search>',
         resolve: {
-          details: [
-            '$stateParams',
-            'Search', 
-            function ($stateParams, Search) {
-              return Search.fetchDetails($stateParams.id);
+          reset: [
+            'App',
+            function (App) {
+              App.resetSearch();
+              return App.watchlist();
             }
           ]
         }
       })
       /**
-       * Movie Watch List
+       * Movie Search Details
+       */
+      .state('app.search.details', {
+        url: 'details/:id',
+        template: '<info is-open="true" close-state="app.search" item="app.state.details" on-add-item-to-watchlist="app.onAddItemToWatchlist(item)"></info>',
+        resolve: {
+          details: [
+            '$stateParams',
+            'App', 
+            function ($stateParams, App) {
+              return App.fetchDetails($stateParams.id);
+            }
+          ]
+        }
+      })
+      /**
+       * Movie Watch List View
        */
       .state('app.watchlist', {
         url: '/watchlist',
-        template: '<watch-list on-clear-watch="app.onClearWatch(id)" watchlist="app.watchlist"></watch-list>',
+        template: '<watch-list on-clear-watch="app.onClearWatch(id)" on-show-details="app.onShowDetails(item)" watchlist="app.state.watchlistItems"></watch-list>',
         resolve: {
           watchlist: [
-            'Search',
-            function (Search) {
-              return Search.watchlist();
+            'App',
+            function (App) {
+              return App.watchlist();
             }
           ]
         }

@@ -2,9 +2,7 @@
  * Search
  */
 export default {
-  bindings: {
-    'isLoading': '=',
-    'results': '='
-  },
+  isolate: false,
+  bindings: {},
   templateUrl: 'views/_search.tpl.html'
 }

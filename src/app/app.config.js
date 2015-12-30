@@ -1,9 +1,20 @@
+// Dependencies
+// -------------------------------------------------
 import angular from 'angular';
-import SearchService from './services/search';
+
+// Services
+// -------------------------------------------------
+import AppService from './services/app';
+
+// Components
+// -------------------------------------------------
+// views
 import App from './components/app';
-import SearchInput from './components/search-input';
-import Info from './components/info';
 import Search from './components/search';
+// widgets
+import SearchInput from './components/search-input';
+import SearchResults from './components/search-results';
+import Info from './components/info';
 import WatchList from './components/watch-list';
 
 /**
@@ -20,7 +31,7 @@ angular.module('movieSearch.config', [])
  * Services
  */
 angular.module('movieSearch.services', [])
-  .factory('Search', SearchService);
+  .factory('App', AppService);
 
 /**
  * Directives
@@ -30,4 +41,5 @@ angular.module('movieSearch.components', [])
   .component('searchInput', SearchInput)
   .component('info', Info)
   .component('search', Search)
+  .component('searchResults', SearchResults)
   .component('watchList', WatchList);

@@ -5,6 +5,7 @@ import angular from 'angular';
 
 export default {
   bindings: {
+    'query': '=',
     'onSearch': '&',
     'onClearResults': '&'
   },
@@ -15,8 +16,7 @@ export default {
     '</div>'
   ].join(''),
   controller: [
-    'Search', 
-    function (Search) {
+    function () {
 
       /**
        * Handle key input

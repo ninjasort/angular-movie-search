@@ -2,20 +2,12 @@
  * Watch List
  */
 export default {
+  isolate: false,
   bindings: {
     watchlist: '=',
-    onClearWatch: '&'
+    clearWatch: '&onClearWatch',
+    showDetails: '&onShowDetails'
   },
   templateUrl: 'views/_watch-list.tpl.html',
-  controller: [
-    '$state',
-    '$stateParams',
-    'Search',
-    function ($state, $stateParams, Search) {
-      
-      this.clearWatch = (id) => {
-        this.onClearWatch({id: id});
-      }
-    }
-  ]
+  controllerAs: 'watchList'
 };
