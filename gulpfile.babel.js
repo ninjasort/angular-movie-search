@@ -12,7 +12,6 @@ import sourcemaps from 'gulp-sourcemaps';
 import minifyCss from 'gulp-minify-css';
 import minifyHtml from 'gulp-minify-html';
 import browserSync from 'browser-sync';
-import karma from 'gulp-karma';
 
 var config = {
   src: './src',
@@ -33,9 +32,7 @@ var config = {
   watch: [
     'src/app/**/*.js',
     'src/styles/**/*.scss'
-  ],
-  testSrc: './tests',
-  testConfig: 'test/karma.conf.js'
+  ]
 };
 
 // Styles
@@ -111,19 +108,6 @@ gulp.task('pipeline', ['usemin'], () => {
     .pipe(uglify())
     .pipe(sourcemaps.write(config.appSrcMapDest))
     .pipe(gulp.dest(config.appDest));
-});
-
-
-// Test
-// ----------------------------------------
-gulp.task('test', () => {
-  return gulp.src(config.testSrc)
-    .pipe(karma({
-      configFile: config.testConfig,
-      action: 'watch'
-    })).on('error', (err) => {
-      this.emit('end'); //instead of erroring the stream, end it
-    });
 });
 
 // -------------------------------------------------
