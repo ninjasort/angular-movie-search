@@ -16,19 +16,37 @@ import browserSync from 'browser-sync';
 import karma from 'gulp-karma';
 
 var config = {
-  app: 'app'
+  src: './src',
+  dist: './dist',
+  appSrc: './src/app/app.js',
+  appDest: './dist/js',
+  appDestName: 'moviesearch.min.js',
+  appSrcMapDest: '/dist/js',
+  stylesSrc: './src/styles/core.scss',
+  stylesDest: 'dist/css',
+  htmlSrc: './src/app/*.html',
+  imgsSrc: './src/assets/img/**',
+  viewsSrc: './src/app/views/**',
+  viewsBase: './src/app/views',
+  viewsDest: './dist/views',
+  fontsSrc: './src/lib/Materialize/font/**',
+  fontsDest: 'dist/assets/fonts',
+  watch: [
+    'src/app/**/*.js',
+    'src/styles/**/*.scss'
+  ]
 };
 
 // Styles
 // ----------------------------------------
 gulp.task('styles', () => {
-  return gulp.src('./src/styles/core.scss')
+  return gulp.src(config.stylesSrc)
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed'
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest(config.stylesDest));
 });
 
 // // Linting
@@ -44,7 +62,7 @@ gulp.task('styles', () => {
 gulp.task('browserSync', ['pipeline'], () => {
   browserSync({
     server: {
-      baseDir: 'dist'
+      baseDir: config.dist
     }
   });
 });
@@ -52,18 +70,18 @@ gulp.task('browserSync', ['pipeline'], () => {
 // Clean
 // ----------------------------------------
 gulp.task('clean', () => {
-  return gulp.src('./dist')
+  return gulp.src(config.dist)
     .pipe(clean());
 });
 
 // 
 // ----------------------------------------
 gulp.task('usemin', ['clean', 'styles'], () => {
-  return gulp.src('./src/app/*.html')
+  return gulp.src(config.htmlSrc)
     .pipe(usemin({
       html: [minifyHtml()]
     }))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest(config.dist));
 });
 
 // Pipeline - styles, lint, browserify
@@ -72,34 +90,34 @@ gulp.task('pipeline', ['usemin'], () => {
   
   // images
   gulp.src([
-    './src/assets/img/**'
-  ], {base: './src'})
-    .pipe(gulp.dest('dist'));
+    config.imgsSrc
+  ], {base: config.src})
+    .pipe(gulp.dest(config.dist));
 
   // views
   gulp.src([
-    './src/app/views/**'
-  ], {base: './src/app/views'})
-    .pipe(gulp.dest('dist/views'));
+    config.viewsSrc
+  ], {base: config.viewsBase})
+    .pipe(gulp.dest(config.viewsDest));
   
   // fonts, icons
   gulp.src([
-    './src/lib/Materialize/font/**',
+    config.fontsSrc
   ])
-  .pipe(gulp.dest('dist/assets/fonts'));
+  .pipe(gulp.dest(config.fontsDest));
   
   // js bundle
-  return browserify('./src/app/app.js')
+  return browserify(config.appSrc)
     .bundle()
     .on('error', (err) => {
       console.log(err);
     })
-    .pipe(source('moviesearch.min.js'))
+    .pipe(source(config.appDestName))
     .pipe(buffer())
     .pipe(sourcemaps.init())
     .pipe(uglify())
-    .pipe(sourcemaps.write('/dist/js'))
-    .pipe(gulp.dest('./dist/js'));
+    .pipe(sourcemaps.write(config.appSrcMapDest))
+    .pipe(gulp.dest(config.appDest));
 });
 
 
@@ -119,8 +137,5 @@ gulp.task('pipeline', ['usemin'], () => {
 // Watchers
 // -------------------------------------------------
 gulp.task('watch', ['browserSync'], () => {
-  gulp.watch([
-    'src/app/**/*.js',
-    'src/styles/**/*.scss'
-  ], ['pipeline']);
+  gulp.watch(config.watch, ['pipeline']);
 });
