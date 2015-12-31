@@ -1,7 +1,7 @@
 {
   "name": "angular-movie-search",
   "description": "Learn how to create a movie search app with Babel, Browserify, and Angular 1.5",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "babel": {
     "presets": [
       "es2015"
