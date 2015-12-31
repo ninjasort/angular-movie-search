@@ -1,14 +1,8 @@
 {
   "name": "angular-movie-search",
-  "description": "Angular Movie Search - (Babel, Browserify, Angular 1.5.0-beta)",
-  "main": "",
-  "authors": [
-    "Cameron J Roe <cameronjroe@gmail.com>"
-  ],
+  "description": "Learn how to create a movie search app with Babel, Browserify, and Angular 1.5",
+  "main": "src/app/app.js",
   "license": "MIT",
-  "homepage": "https://github.com/cameronjroe/angular-movie-search",
-  "moduleType": [],
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
