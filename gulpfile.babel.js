@@ -19,7 +19,7 @@ var config = {
   appSrc: './src/app/app.js',
   appDest: './dist/js',
   appDestName: 'moviesearch.min.js',
-  appSrcMapDest: '/dist/js',
+  appSrcMapDest: '.',
   stylesSrc: './src/styles/core.scss',
   stylesDest: 'dist/css',
   htmlSrc: './src/app/*.html',

@@ -112,6 +112,10 @@ export default [
           r = this.state.results;
         }
         var set = r.map((item, i) => {
+          if (!this.state.watchlistItems) {
+            this.state.watchlistItems = [];
+            return item;
+          }
           // check in watchlist
           for(var j = 0; j < this.state.watchlistItems.length; j++) {
             if (parseInt(this.state.watchlistItems[j].id) === parseInt(item.id)) {
@@ -156,13 +160,16 @@ export default [
           return false;
         }
         var items = localStorageService.get('watchlist');
+        if (!items) {
+          return false;
+        }
         var selected = items.filter((item) => {
           return parseInt(item.id) === parseInt(id);
         });
         if (selected.length) {
           return this.state.details = selected[0];
         } else {
-          return null;
+          return false;
         }
       },
 
